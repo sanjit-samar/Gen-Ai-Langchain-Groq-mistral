@@ -7,6 +7,7 @@ load_dotenv()
 
 llm = ChatMistralAI(model="mistral-small-2603", temperature=0)
 
+# In message content we are setting behaviuor of llm we can use modes also
 messages = [SystemMessage(content="You are a professional AI agent")]
 
 print("--- welcome to this chat bot, Press 0 to exit the chat!")
