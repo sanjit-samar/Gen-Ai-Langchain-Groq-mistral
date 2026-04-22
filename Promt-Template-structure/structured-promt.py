@@ -44,6 +44,18 @@ final_promt = chat_prompt.invoke(
     }
 )
 
-
 response = llm.invoke(final_promt)
-print(response.content)
+
+# structured_response = parser.parse(response.content)
+
+raw_content = response.content.strip()
+
+# Remove code block markers if present
+if raw_content.startswith("```json"):
+    raw_content = raw_content[len("```json") :].strip()
+if raw_content.startswith("```"):
+    raw_content = raw_content[len("```") :].strip()
+if raw_content.endswith("```"):
+    raw_content = raw_content[:-3].strip()
+
+print(raw_content)
